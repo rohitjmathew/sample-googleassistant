@@ -93,10 +93,9 @@ public class AssistantActivity extends Activity implements Button.OnButtonEventL
             }
         });
 
-
         // Audio routing configuration: use default routing.
-        AudioDeviceInfo audioInputDevice = null;
-        AudioDeviceInfo audioOutputDevice = null;
+        AudioDeviceInfo audioInputDevice = findAudioDevice(AudioManager.GET_DEVICES_INPUTS, AudioDeviceInfo.TYPE_BUILTIN_MIC);
+        AudioDeviceInfo audioOutputDevice = findAudioDevice(AudioManager.GET_DEVICES_OUTPUTS, AudioDeviceInfo.TYPE_BUILTIN_SPEAKER);
         if (USE_VOICEHAT_I2S_DAC) {
             audioInputDevice = findAudioDevice(AudioManager.GET_DEVICES_INPUTS, AudioDeviceInfo.TYPE_BUS);
             if (audioInputDevice == null) {
